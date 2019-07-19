@@ -2,6 +2,7 @@
 
 console.log('Welcome to the Brain Games!');
 
-import { name } from '..';
+import name from '..';
 
 console.log(`Hello, ${name}!`);
+
