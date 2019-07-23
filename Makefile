@@ -7,7 +7,7 @@ lint:
 	npx eslint .
 
 build:
-	npm run-script build
+	npm run build
 
 publish:
-	npm publish --dry-run
+	npm publish
