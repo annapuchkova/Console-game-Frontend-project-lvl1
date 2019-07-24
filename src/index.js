@@ -15,7 +15,7 @@ export const even = () => {
   const questions = (counter) => {
     if (counter > 3) {
       console.log(`Congratulations, ${name}!`);
-      return;
+      return undefined;
     }
     const randomNumber = getRandomInt(1, 20);
     console.log(`Question: ${randomNumber}`);
@@ -27,6 +27,7 @@ export const even = () => {
     }
     console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
     console.log(`Let's try again, ${name}!`);
+    return undefined;
   };
   return questions(1);
 };
