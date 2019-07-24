@@ -10,4 +10,4 @@ build:
 	npm run build
 
 publish:
-	npm publish
+	npm publish --dry-run
