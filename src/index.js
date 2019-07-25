@@ -19,7 +19,6 @@ const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min + 1) +
 const ops = ['+', '-', '*'];
 const actionMap = {
   '*': (n1, n2) => n1 * n2,
-  '/': (n1, n2) => n1 / n2,
   '+': (n1, n2) => n1 + n2,
   '-': (n1, n2) => n1 - n2,
 };

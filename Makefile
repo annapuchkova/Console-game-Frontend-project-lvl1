@@ -11,3 +11,9 @@ build:
 
 publish:
 	npm publish --dry-run
+
+gitEmail:
+	git config --local user.email "puchkova.anne@gmail.com"
+
+gitName:
+	git config --local user.name "annapuchkova"
