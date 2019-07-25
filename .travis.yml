@@ -6,5 +6,4 @@ script:
 
 notifications:
   slack:
-    on_success: always
     on_failure: always
