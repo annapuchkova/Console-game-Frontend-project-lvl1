@@ -17,6 +17,12 @@ const rules = {
 
 const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min + 1) + min));
 const ops = ['+', '-', '*'];
+const actionMap = {
+  '*': (n1, n2) => n1 * n2,
+  '/': (n1, n2) => n1 / n2,
+  '+': (n1, n2) => n1 + n2,
+  '-': (n1, n2) => n1 - n2
+}
 
 export default (gameType) => {
   greeting();
@@ -37,7 +43,7 @@ export default (gameType) => {
     };
     const correctAnswer = {
       even: (question[gameType] % 2 === 0) ? 'yes' : 'no',
-      calc: eval(question[gameType]),
+      calc: actionMap[operator](firstNumber, secontNumber),
     };
     console.log(`Question: ${question[gameType]}`);
     const answer = readlineSync.question('Your answer: ');
