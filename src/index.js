@@ -31,13 +31,13 @@ export default (gameType) => {
       'calc': `${firstNumber} ${operator} ${secontNumber}`,
     };
     const correctAnswer = {
-      'even': (question.even % 2 === 0) ? 'yes' : 'no',
-      'calc': eval(question.calc),
+      'even': (question[even] % 2 === 0) ? 'yes' : 'no',
+      'calc': eval(question[calc]),
     };
-    console.log(`Question: ${question[gameType]}`);
+    console.log(`Question!!!: ${question[gameType]}`);
     const answer = readlineSync.question('Your answer: ');
-    //const correctAnswer = (randomNumber % 2 === 0) ? 'yes' : 'no';
-    if (Number(answer) === correctAnswer[gameType]) {
+    console.log('zzz ' + correctAnswer[gameType] + ' fff');
+    if (answer == correctAnswer[gameType]) {
       console.log('Correct!');
       return questions(counter + 1);
     }
