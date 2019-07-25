@@ -41,7 +41,7 @@ export default (gameType) => {
     };
     console.log(`Question: ${question[gameType]}`);
     const answer = readlineSync.question('Your answer: ');
-    if (answer == correctAnswer[gameType]) {
+    if (String(answer) === String(correctAnswer[gameType])) {
       console.log('Correct!');
       return questions(counter + 1);
     }

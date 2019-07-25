@@ -3,4 +3,5 @@
 import { greeting, sayHello } from '../..';
 
 greeting();
+
 sayHello();
