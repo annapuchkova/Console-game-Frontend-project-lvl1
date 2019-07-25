@@ -24,7 +24,7 @@ const actionMap = {
   '-': (n1, n2) => n1 - n2,
 };
 
-const getGCD = (n1, n2) => ((!n2) ? getGCD(n2, n1 % n2) : n1);
+const getGCD = (n1, n2) => ((!n2) ? n1 : getGCD(n2, n1 % n2));
 
 export default (gameType) => {
   greeting();
@@ -35,8 +35,8 @@ export default (gameType) => {
       console.log(`Congratulations, ${name}!`);
       return undefined;
     }
-    const firstNumber = getRandomInt(1, 10);
-    const secontNumber = getRandomInt(1, 10);
+    const firstNumber = getRandomInt(1, 47);
+    const secontNumber = getRandomInt(1, 47);
     const operator = ops[getRandomInt(0, 2)];
     const question = {
       even: `${firstNumber}`,
