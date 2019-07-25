@@ -24,7 +24,7 @@ const actionMap = {
   '-': (n1, n2) => n1 - n2,
 };
 
-const getGCD = (n1, n2) => ( ! n2) ? getGCD(n2, n1 % n2) : n1;
+const getGCD = (n1, n2) => ((!n2) ? getGCD(n2, n1 % n2) : n1);
 
 export default (gameType) => {
   greeting();
