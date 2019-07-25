@@ -31,8 +31,8 @@ export default (gameType) => {
       'calc': `${firstNumber} ${operator} ${secontNumber}`,
     };
     const correctAnswer = {
-      'even': (question[even] % 2 === 0) ? 'yes' : 'no',
-      'calc': eval(question[calc]),
+      'even': (question[gameType] % 2 === 0) ? 'yes' : 'no',
+      'calc': eval(question[gameType]),
     };
     console.log(`Question!!!: ${question[gameType]}`);
     const answer = readlineSync.question('Your answer: ');
