@@ -3,3 +3,8 @@ node_js:
   - node
 script:
   - make lint
+
+notifications:
+  slack:
+    on_success: always
+    on_failure: always
