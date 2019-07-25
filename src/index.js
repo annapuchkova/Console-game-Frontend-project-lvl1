@@ -13,6 +13,7 @@ export const sayHello = () => {
 const rules = {
   even: 'Answer "yes" if number even otherwise answer "no".\n',
   calc: 'What is the result of the expression?\n',
+  gcd: 'Find the greatest common divisor of given numbers.\n',
 };
 
 const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min + 1) + min));
@@ -22,6 +23,8 @@ const actionMap = {
   '+': (n1, n2) => n1 + n2,
   '-': (n1, n2) => n1 - n2,
 };
+
+const getGCD = (n1, n2) => ( ! n2) ? getGCD(n2, n1 % n2) : n1;
 
 export default (gameType) => {
   greeting();
@@ -38,10 +41,12 @@ export default (gameType) => {
     const question = {
       even: `${firstNumber}`,
       calc: `${firstNumber} ${operator} ${secontNumber}`,
+      gcd: `${firstNumber} ${secontNumber}`,
     };
     const correctAnswer = {
       even: (question[gameType] % 2 === 0) ? 'yes' : 'no',
       calc: actionMap[operator](firstNumber, secontNumber),
+      gcd: getGCD(firstNumber, secontNumber),
     };
     console.log(`Question: ${question[gameType]}`);
     const answer = readlineSync.question('Your answer: ');
