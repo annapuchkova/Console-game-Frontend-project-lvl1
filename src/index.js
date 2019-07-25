@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 
 const rules = {
   even: 'Answer "yes" if number even otherwise answer "no".\n',
-  calc: 'What is the result of the expression?'
+  calc: 'What is the result of the expression?\n',
 };
 
 const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min + 1) + min));
@@ -11,18 +11,11 @@ const firstNumber = getRandomInt(1, 10);
 const secontNumber = getRandomInt(1, 10);
 const operator = ops[getRandomInt(0, 2)];
 
-const question = {
-  even: `${firstNumber}`,
-  calc: `${firstNumber} ${operator} ${secontNumber}`
-};
-const correctAnswer = {
-  even: (question.even % 2 === 0) ? 'yes' : 'no',
-  calc: eval(question.calc)
-};
 
-export const game = (gameType) => {
+
+export default (gameType) => {
   console.log('Welcome to the Brain Games!');
-  console.log(rules.gameType);
+  console.log(rules[gameType]);
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!\n`);
   const questions = (counter) => {
@@ -30,15 +23,25 @@ export const game = (gameType) => {
       console.log(`Congratulations, ${name}!`);
       return undefined;
     }
-    //const randomNumber = getRandomInt(1, 20);
-    console.log(`Question: ${question.gameType}`);
+    const firstNumber = getRandomInt(1, 10);
+    const secontNumber = getRandomInt(1, 10);
+    const operator = ops[getRandomInt(0, 2)];
+    const question = {
+      'even': `${firstNumber}`,
+      'calc': `${firstNumber} ${operator} ${secontNumber}`,
+    };
+    const correctAnswer = {
+      'even': (question.even % 2 === 0) ? 'yes' : 'no',
+      'calc': eval(question.calc),
+    };
+    console.log(`Question: ${question[gameType]}`);
     const answer = readlineSync.question('Your answer: ');
     //const correctAnswer = (randomNumber % 2 === 0) ? 'yes' : 'no';
-    if (Number(answer) === correctAnswer.gameType) {
+    if (Number(answer) === correctAnswer[gameType]) {
       console.log('Correct!');
       return questions(counter + 1);
     }
-    console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+    console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer[gameType]}".`);
     console.log(`Let's try again, ${name}!`);
     return undefined;
   };
@@ -47,9 +50,9 @@ export const game = (gameType) => {
 
 
 
+/*
 
-
-/*export const calc = () => {
+export const calc = () => {
   console.log('Welcome to the Brain Games!');
   console.log('What is the result of the expression?.\n');
   const name = readlineSync.question('May I have your name? ');
@@ -75,4 +78,5 @@ export const game = (gameType) => {
     return undefined;
   };
   return questions(1);
-};*/
+};
+*/
