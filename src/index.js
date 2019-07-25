@@ -21,14 +21,13 @@ const actionMap = {
   '*': (n1, n2) => n1 * n2,
   '/': (n1, n2) => n1 / n2,
   '+': (n1, n2) => n1 + n2,
-  '-': (n1, n2) => n1 - n2
-}
+  '-': (n1, n2) => n1 - n2,
+};
 
 export default (gameType) => {
   greeting();
   console.log(rules[gameType]);
   const name = sayHello();
-  console.log(`Hello, ${name}!\n`);
   const questions = (counter) => {
     if (counter > 3) {
       console.log(`Congratulations, ${name}!`);
