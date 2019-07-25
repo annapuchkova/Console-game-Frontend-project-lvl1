@@ -7,3 +7,6 @@ script:
 notifications:
   slack:
     on_failure: always
+    on_success: always
+  email:
+    recipients: puchkova.anne@gmail.com
