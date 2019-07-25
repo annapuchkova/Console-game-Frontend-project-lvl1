@@ -1,35 +1,40 @@
 import readlineSync from 'readline-sync';
 
-const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min + 1) + min));
-const ops = ['+', '-', '*'];
-
-export const greeting = () => {
-  console.log('Welcome to the Brain Games!');
-};
-export const sayHello = () => {
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!\n`);
-  return userName;
-};
 const rules = {
   even: 'Answer "yes" if number even otherwise answer "no".\n',
   calc: 'What is the result of the expression?'
 };
 
+const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min + 1) + min));
+const ops = ['+', '-', '*'];
+const firstNumber = getRandomInt(1, 10);
+const secontNumber = getRandomInt(1, 10);
+const operator = ops[getRandomInt(0, 2)];
+
+const question = {
+  even: `${firstNumber}`,
+  calc: `${firstNumber} ${operator} ${secontNumber}`
+};
+const correctAnswer = {
+  even: (question.even % 2 === 0) ? 'yes' : 'no',
+  calc: eval(question.calc)
+};
+
 export const game = (gameType) => {
-  greeting();
+  console.log('Welcome to the Brain Games!');
   console.log(rules.gameType);
-  const name = sayHello();
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!\n`);
   const questions = (counter) => {
     if (counter > 3) {
       console.log(`Congratulations, ${name}!`);
       return undefined;
     }
-    const randomNumber = getRandomInt(1, 20);
-    console.log(`Question: ${randomNumber}`);
+    //const randomNumber = getRandomInt(1, 20);
+    console.log(`Question: ${question.gameType}`);
     const answer = readlineSync.question('Your answer: ');
-    const correctAnswer = (randomNumber % 2 === 0) ? 'yes' : 'no';
-    if (answer === correctAnswer) {
+    //const correctAnswer = (randomNumber % 2 === 0) ? 'yes' : 'no';
+    if (Number(answer) === correctAnswer.gameType) {
       console.log('Correct!');
       return questions(counter + 1);
     }
@@ -39,7 +44,12 @@ export const game = (gameType) => {
   };
   return questions(1);
 };
-export const calc = () => {
+
+
+
+
+
+/*export const calc = () => {
   console.log('Welcome to the Brain Games!');
   console.log('What is the result of the expression?.\n');
   const name = readlineSync.question('May I have your name? ');
@@ -65,4 +75,4 @@ export const calc = () => {
     return undefined;
   };
   return questions(1);
-};
+};*/
