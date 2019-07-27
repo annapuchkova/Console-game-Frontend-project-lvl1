@@ -9,7 +9,7 @@
     "brain-calc": "dist/bin/games/brain-calc.js",
     "brain-gcd": "dist/bin/games/brain-gcd.js",
     "brain-progression": "dist/bin/games/brain-progression.js",
-    "brain-prime": "dist/bin/games/brain-prime.js",
+    "brain-prime": "dist/bin/games/brain-prime.js"
   },
   "engines": {
     "node": ">=8"
