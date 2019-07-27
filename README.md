@@ -13,7 +13,7 @@ It is the console games.
 
 # Install
 
-npm install -g brain_games_of_anna_puchkova
+npm install -g frondend-project
 
 # Usage
 
