@@ -1,5 +1,6 @@
 import readlineSync from 'readline-sync';
 import { getProgression, progressionAnswer } from './progression';
+import checkSimple from './checkSimple';
 import { getRandomInt, ops, actionMap } from './randoms';
 import rules from './rules';
 import greeting from './greeting';
@@ -23,12 +24,14 @@ export default (gameType) => {
       calc: `${firstNumber} ${operator} ${secontNumber}`,
       gcd: `${firstNumber} ${secontNumber}`,
       progression: `${getProgression()}`,
+      prime: `${firstNumber}`,
     };
     const correctAnswer = {
       even: (question[gameType] % 2 === 0) ? 'yes' : 'no',
       calc: actionMap[operator](firstNumber, secontNumber),
       gcd: getGCD(firstNumber, secontNumber),
       progression: progressionAnswer(question[gameType]),
+      prime: checkSimple(firstNumber),
     };
     console.log(`Question: ${question[gameType]}`);
     const answer = readlineSync.question('Your answer: ');
