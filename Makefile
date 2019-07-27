@@ -1,7 +1,7 @@
 install: npm install
 
 start:
-	npx babel-node 'src/bin/games/brain-gcd.js' 10
+	npx babel-node 'src/bin/games/brain-progression.js' 10
 
 lint:
 	npx eslint .
@@ -17,3 +17,6 @@ gitEmail:
 
 gitName:
 	git config --local user.name "annapuchkova"
+
+rec:
+	asciinema rec

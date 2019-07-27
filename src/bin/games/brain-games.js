@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { greeting, sayHello } from '../..';
+import greeting from '../greeting';
+import greeting from '../sayHello';
 
 greeting();
 

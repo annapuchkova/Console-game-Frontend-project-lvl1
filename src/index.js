@@ -1,30 +1,10 @@
 import readlineSync from 'readline-sync';
-
-
-export const greeting = () => {
-  console.log('Welcome to the Brain Games!');
-};
-export const sayHello = () => {
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!\n`);
-  return userName;
-};
-
-const rules = {
-  even: 'Answer "yes" if number even otherwise answer "no".\n',
-  calc: 'What is the result of the expression?\n',
-  gcd: 'Find the greatest common divisor of given numbers.\n',
-};
-
-const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min + 1) + min));
-const ops = ['+', '-', '*'];
-const actionMap = {
-  '*': (n1, n2) => n1 * n2,
-  '+': (n1, n2) => n1 + n2,
-  '-': (n1, n2) => n1 - n2,
-};
-
-const getGCD = (n1, n2) => ((!n2) ? n1 : getGCD(n2, n1 % n2));
+import { getProgression, progressionAnswer } from './progression';
+import { getRandomInt, ops, actionMap } from './randoms';
+import rules from './rules';
+import greeting from './greeting';
+import sayHello from './sayHello';
+import { getGCD } from './getGCD';
 
 export default (gameType) => {
   greeting();
@@ -42,11 +22,13 @@ export default (gameType) => {
       even: `${firstNumber}`,
       calc: `${firstNumber} ${operator} ${secontNumber}`,
       gcd: `${firstNumber} ${secontNumber}`,
+      progression: `${getProgression()}`,
     };
     const correctAnswer = {
       even: (question[gameType] % 2 === 0) ? 'yes' : 'no',
       calc: actionMap[operator](firstNumber, secontNumber),
       gcd: getGCD(firstNumber, secontNumber),
+      progression: progressionAnswer(question[gameType]),
     };
     console.log(`Question: ${question[gameType]}`);
     const answer = readlineSync.question('Your answer: ');
