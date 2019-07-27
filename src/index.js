@@ -1,11 +1,10 @@
 import readlineSync from 'readline-sync';
-import { getProgression, progressionAnswer } from './progression';
+import { getProgression, progressionAnswer, getGCD } from './maths';
 import checkSimple from './checkSimple';
 import { getRandomInt, ops, actionMap } from './randoms';
 import rules from './rules';
 import greeting from './greeting';
 import sayHello from './sayHello';
-import { getGCD } from './getGCD';
 
 export default (gameType) => {
   greeting();

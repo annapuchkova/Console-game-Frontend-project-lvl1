@@ -28,3 +28,5 @@ export const progressionAnswer = (progression) => {
   const step = Number(arr[2]) - Number(arr[1]);
   return (indexHidden === 0) ? Number(arr[1]) - step : Number(arr[8]) + step;
 };
+
+export const getGCD = (n1, n2) => ((!n2) ? n1 : getGCD(n2, n1 % n2));

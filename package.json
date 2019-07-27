@@ -1,7 +1,7 @@
 {
   "name": "frondend-project",
   "version": "7.0.1",
-  "description": "",
+  "description": "Brain-Games: Hexlet Project #1",
   "main": "index.js",
   "bin": {
     "brain-games": "dist/bin/games/brain-games.js",
@@ -26,6 +26,12 @@
     "type": "git",
     "url": "git+https://github.com/annapuchkova/frontend-project-lvl1.git"
   },
+  "keywords": [
+    "hexlet",
+    "brain-games",
+    "project1"
+  ],
+
   "author": "anna puchkova",
   "license": "ISC",
   "bugs": {
