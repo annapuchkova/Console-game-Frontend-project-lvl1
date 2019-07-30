@@ -1,14 +1,13 @@
-//import { cons, car, cdr, toString } from '@hexlet/pairs';
 import readlineSync from 'readline-sync';
-import { getRandomInt, ops, actionMap } from '../randoms';
-import checkSimple from './checkSimple';
+import { getRandomInt } from '../randoms';
+import checkSimple from '../checkSimple';
 import greeting from '../greeting';
 import sayHello from '../sayHello';
 
 
 export default () => {
   greeting();
-  const rule = `Answer "yes" if given number is prime. Otherwise answer "no".\n`;
+  const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".\n';
   console.log(rule);
   const name = sayHello();
   const questions = (counter) => {
@@ -19,7 +18,6 @@ export default () => {
     const firstNumber = getRandomInt(1, 10);
     const question = `${firstNumber}`;
     const correctAnswer = checkSimple(firstNumber);
-    const expected = cons(question, correctAnswer);
     console.log(`Question: ${question}`);
     const actualAnswer = readlineSync.question('Your answer: ');
     if (String(correctAnswer) === actualAnswer) {
@@ -29,6 +27,6 @@ export default () => {
     console.log(`"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
     console.log(`Let's try again, ${name}!`);
     return undefined;
-};
+  };
   return questions(1);
 };

@@ -1,13 +1,12 @@
-import { cons, car, cdr, toString } from '@hexlet/pairs';
 import readlineSync from 'readline-sync';
-import { getProgression, progressionAnswer, getGCD } from './maths';
+import { getProgression, progressionAnswer } from '../maths';
 import greeting from '../greeting';
 import sayHello from '../sayHello';
 
 
 export default () => {
   greeting();
-  const rule = `What number is missing in the progression?.\n`;
+  const rule = 'What number is missing in the progression?.\n';
   console.log(rule);
   const name = sayHello();
   const questions = (counter) => {
@@ -17,7 +16,6 @@ export default () => {
     }
     const question = `${getProgression()}`;
     const correctAnswer = progressionAnswer(question);
-    const expected = cons(question, correctAnswer);
     console.log(`Question: ${question}`);
     const actualAnswer = readlineSync.question('Your answer: ');
     if (String(correctAnswer) === actualAnswer) {
@@ -27,6 +25,6 @@ export default () => {
     console.log(`"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
     console.log(`Let's try again, ${name}!`);
     return undefined;
-};
+  };
   return questions(1);
 };
