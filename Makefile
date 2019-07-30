@@ -1,7 +1,7 @@
 install: npm install
 
 start:
-	npx babel-node 'src/bin/games/brain-prime.js' 10
+	npx babel-node 'src/bin/brain-even.js' 10
 
 lint:
 	npx eslint .
