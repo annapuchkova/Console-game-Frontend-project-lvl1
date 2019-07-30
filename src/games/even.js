@@ -1,8 +1,13 @@
-import readlineSync from 'readline-sync';
-import { getRandomInt } from '../randoms';
-import greeting from '../greeting';
-import sayHello from '../sayHello';
+import { cons } from '@hexlet/pairs';
+import { getRandomInt } from '../maths';
+import { greeting, sayHello } from '../greeting';
+import core from '..';
 
+export const getPairCalc = () => {
+  const question = getRandomInt(1, 100);
+  const correctAnswer = (question % 2 === 0) ? 'yes' : 'no';
+  return cons(question, correctAnswer);
+};
 
 export default () => {
   greeting();
@@ -14,16 +19,11 @@ export default () => {
       console.log(`Congratulations, ${name}!`);
       return undefined;
     }
-    const question = getRandomInt(1, 100);
-    const correctAnswer = (question % 2 === 0) ? 'yes' : 'no';
-    console.log(`Question: ${question}`);
-    const actualAnswer = readlineSync.question('Your answer: ');
-    if (correctAnswer === actualAnswer) {
-      console.log('Correct!');
+    const pair = getPairCalc();
+    const result = core(name, pair);
+    if (!result) {
       return questions(counter + 1);
     }
-    console.log(`"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-    console.log(`Let's try again, ${name}!`);
     return undefined;
   };
   return questions(1);

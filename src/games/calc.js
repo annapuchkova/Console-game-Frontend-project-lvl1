@@ -1,8 +1,17 @@
-import readlineSync from 'readline-sync';
-import { getRandomInt, ops, actionMap } from '../randoms';
-import greeting from '../greeting';
-import sayHello from '../sayHello';
+import { cons } from '@hexlet/pairs';
+import { greeting, sayHello } from '../greeting';
+import { getRandomInt, ops, actionMap } from '../maths';
+import core from '..';
 
+export const getPairCalc = () => {
+  const firstNumber = getRandomInt(1, 10);
+  const secontNumber = getRandomInt(1, 10);
+  const operator = ops[getRandomInt(0, 2)];
+  const question = `${firstNumber} ${operator} ${secontNumber}`;
+  const correctAnswer = actionMap[operator](firstNumber, secontNumber);
+  const pair = cons(question, correctAnswer);
+  return pair;
+};
 
 export default () => {
   greeting();
@@ -14,19 +23,11 @@ export default () => {
       console.log(`Congratulations, ${name}!`);
       return undefined;
     }
-    const firstNumber = getRandomInt(1, 10);
-    const secontNumber = getRandomInt(1, 10);
-    const operator = ops[getRandomInt(0, 2)];
-    const question = `${firstNumber} ${operator} ${secontNumber}`;
-    const correctAnswer = actionMap[operator](firstNumber, secontNumber);
-    console.log(`Question: ${question}`);
-    const actualAnswer = readlineSync.question('Your answer: ');
-    if (String(correctAnswer) === actualAnswer) {
-      console.log('Correct!');
+    const pair = getPairCalc();
+    const result = core(name, pair);
+    if (!result) {
       return questions(counter + 1);
     }
-    console.log(`"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-    console.log(`Let's try again, ${name}!`);
     return undefined;
   };
   return questions(1);

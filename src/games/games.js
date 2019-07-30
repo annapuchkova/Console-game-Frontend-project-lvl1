@@ -1,5 +1,4 @@
-import greeting from '../greeting';
-import sayHello from '../sayHello';
+import { greeting, sayHello } from '../greeting';
 
 export default () => {
   greeting();

@@ -1,8 +1,14 @@
-import readlineSync from 'readline-sync';
+import { cons } from '@hexlet/pairs';
+import { greeting, sayHello } from '../greeting';
 import { getProgression, progressionAnswer } from '../maths';
-import greeting from '../greeting';
-import sayHello from '../sayHello';
+import core from '..';
 
+export const getPairCalc = () => {
+  const question = `${getProgression()}`;
+  const correctAnswer = progressionAnswer(question);
+  const pair = cons(question, correctAnswer);
+  return pair;
+};
 
 export default () => {
   greeting();
@@ -14,16 +20,11 @@ export default () => {
       console.log(`Congratulations, ${name}!`);
       return undefined;
     }
-    const question = `${getProgression()}`;
-    const correctAnswer = progressionAnswer(question);
-    console.log(`Question: ${question}`);
-    const actualAnswer = readlineSync.question('Your answer: ');
-    if (String(correctAnswer) === actualAnswer) {
-      console.log('Correct!');
+    const pair = getPairCalc();
+    const result = core(name, pair);
+    if (!result) {
       return questions(counter + 1);
     }
-    console.log(`"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-    console.log(`Let's try again, ${name}!`);
     return undefined;
   };
   return questions(1);

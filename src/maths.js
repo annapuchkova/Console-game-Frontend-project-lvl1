@@ -1,4 +1,11 @@
-import { getRandomInt } from './randoms';
+
+export const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min + 1) + min));
+export const ops = ['+', '-', '*'];
+export const actionMap = {
+  '*': (n1, n2) => n1 * n2,
+  '+': (n1, n2) => n1 + n2,
+  '-': (n1, n2) => n1 - n2,
+};
 
 export const getProgression = () => {
   const hiddenNumIndex = getRandomInt(0, 9);
@@ -30,3 +37,12 @@ export const progressionAnswer = (progression) => {
 };
 
 export const getGCD = (n1, n2) => ((!n2) ? n1 : getGCD(n2, n1 % n2));
+
+export const checkSimple = (num) => {
+  for (let i = 2; i < num; i += 1) {
+    if (num % i === 0) {
+      return 'no';
+    }
+  }
+  return 'yes';
+};
