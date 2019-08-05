@@ -9,7 +9,7 @@ export const getDataForGCD = () => {
   const secontNumber = getRandomInt(1, 10);
   const question = `${firstNumber} ${secontNumber}`;
   const correctAnswer = getGCD(firstNumber, secontNumber);
-  return cons(`${question}`, correctAnswer);
+  return cons(question, correctAnswer);
 };
 
 const rule = 'Find the greatest common divisor of given numbers.\n';

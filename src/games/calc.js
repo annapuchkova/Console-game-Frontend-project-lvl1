@@ -15,7 +15,7 @@ export const getDataForCalc = () => {
   const operator = operations[getRandomInt(0, 2)];
   const question = `${firstNumber} ${operator} ${secontNumber}`;
   const correctAnswer = actions[operator](firstNumber, secontNumber);
-  return cons(`${question}`, correctAnswer);
+  return cons(question, correctAnswer);
 };
 
 const rule = 'What is the result of the expression?.\n';

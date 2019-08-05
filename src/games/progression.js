@@ -34,7 +34,7 @@ const getProgressionAnswer = (progression) => {
 export const getDataForProgression = () => {
   const question = `${getProgression()}`;
   const correctAnswer = getProgressionAnswer(question);
-  return cons(`${question}`, correctAnswer);
+  return cons(question, correctAnswer);
 };
 
 const rule = 'What number is missing in the progression?.\n';
