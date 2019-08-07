@@ -13,7 +13,7 @@ const actions = {
 const getData = () => {
   const firstOperand = getRandomInt(1, 10);
   const secondOperand = getRandomInt(1, 10);
-  const operator = operations[getRandomInt(operationsRange)];
+  const operator = operations[getRandomInt(0, operationsRange)];
   const question = `${firstOperand} ${operator} ${secondOperand}`;
   const correctAnswer = actions[operator](firstOperand, secondOperand);
   return cons(question, `${correctAnswer}`);

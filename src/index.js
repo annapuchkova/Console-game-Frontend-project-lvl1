@@ -19,7 +19,7 @@ const sayPity = (actualAnswer, correctAnswer, name) => {
 
 const greeting = (rule) => {
   console.log('Welcome to the Brain Games!');
-  console.log(rule);
+  console.log(`${rule}\n`);
 };
 
 const sayHello = name => console.log(`Hello, ${name}!\n`);
@@ -27,7 +27,7 @@ const sayHello = name => console.log(`Hello, ${name}!\n`);
 export default (rule, questionAndCorrectAnswer) => {
   greeting(rule);
 
-  const name = readlineSync.question('May I have your name?');
+  const name = readlineSync.question('May I have your name? ');
   sayHello(name);
 
   const playRounds = (roundNumber) => {
