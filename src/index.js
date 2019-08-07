@@ -1,33 +1,50 @@
 import readlineSync from 'readline-sync';
 import { car, cdr } from '@hexlet/pairs';
 
+const totalRounds = 3;
 
-export default (rule, questionAndCorrectAnswer) => {
+const congratulate = name => console.log(`Congratulations, ${name}!`);
+
+const askAnswer = (question) => {
+  console.log(`Question: ${question}`);
+  return readlineSync.question('Your answer: ');
+};
+
+const sayCorrect = () => console.log('Correct!');
+
+const sayPity = (actualAnswer, correctAnswer, name) => {
+  console.log(`\n"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+  console.log(`Let's try again, ${name}!`);
+};
+
+const greeting = (rule) => {
   console.log('Welcome to the Brain Games!');
   console.log(rule);
+};
 
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!\n`);
+const sayHello = name => console.log(`Hello, ${name}!\n`);
 
-  const rounds = (roundNumber) => {
-    if (roundNumber > 3) {
-      console.log(`Congratulations, ${name}!`);
-      return;
+export default (rule, questionAndCorrectAnswer) => {
+  greeting(rule);
+
+  const name = readlineSync.question('May I have your name?');
+  sayHello(name);
+
+  const playRounds = (roundNumber) => {
+    if (roundNumber > totalRounds) {
+      return congratulate(name);
     }
     const nextQuestionAndAnswer = questionAndCorrectAnswer();
     const question = car(nextQuestionAndAnswer);
     const correctAnswer = cdr(nextQuestionAndAnswer);
 
-    console.log(`Question: ${question}`);
-    const actualAnswer = readlineSync.question('Your answer: ');
+    const actualAnswer = askAnswer(question);
 
     if (correctAnswer === actualAnswer) {
-      console.log('Correct!');
-      rounds(roundNumber + 1);
-    } else {
-      console.log(`\n"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      console.log(`Let's try again, ${name}!`);
+      sayCorrect();
+      return playRounds(roundNumber + 1);
     }
+    return sayPity(actualAnswer, correctAnswer, name);
   };
-  rounds(1);
+  playRounds(1);
 };

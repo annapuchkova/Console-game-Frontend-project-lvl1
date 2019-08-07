@@ -2,16 +2,16 @@ import { cons } from '@hexlet/pairs';
 import getRandomInt from '../maths';
 import core from '..';
 
-const getGCD = (n1, n2) => ((!n2) ? n1 : getGCD(n2, n1 % n2));
+const getGcd = (n1, n2) => ((!n2) ? n1 : getGcd(n2, n1 % n2));
 
-export const getDataForGCD = () => {
-  const firstNumber = getRandomInt(1, 10);
-  const secontNumber = getRandomInt(1, 10);
-  const question = `${firstNumber} ${secontNumber}`;
-  const correctAnswer = getGCD(firstNumber, secontNumber);
+const getData = () => {
+  const firstOperand = getRandomInt(1, 10);
+  const secondOperand = getRandomInt(1, 10);
+  const question = `${firstOperand} ${secondOperand}`;
+  const correctAnswer = getGcd(firstOperand, secondOperand);
   return cons(question, `${correctAnswer}`);
 };
 
-const rule = 'Find the greatest common divisor of given numbers.\n';
+const description = 'Find the greatest common divisor of given numbers.';
 
-export default () => core(rule, getDataForGCD);
+export default () => core(description, getData);

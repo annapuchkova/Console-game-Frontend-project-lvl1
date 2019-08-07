@@ -3,21 +3,22 @@ import getRandomInt from '../maths';
 import core from '..';
 
 const operations = ['+', '-', '*'];
+const operationsRange = [0, operations.length - 1];
 const actions = {
   '*': (n1, n2) => n1 * n2,
   '+': (n1, n2) => n1 + n2,
   '-': (n1, n2) => n1 - n2,
 };
 
-export const getDataForCalc = () => {
-  const firstNumber = getRandomInt(1, 10);
-  const secontNumber = getRandomInt(1, 10);
-  const operator = operations[getRandomInt(0, 2)];
-  const question = `${firstNumber} ${operator} ${secontNumber}`;
-  const correctAnswer = actions[operator](firstNumber, secontNumber);
+const getData = () => {
+  const firstOperand = getRandomInt(1, 10);
+  const secondOperand = getRandomInt(1, 10);
+  const operator = operations[getRandomInt(operationsRange)];
+  const question = `${firstOperand} ${operator} ${secondOperand}`;
+  const correctAnswer = actions[operator](firstOperand, secondOperand);
   return cons(question, `${correctAnswer}`);
 };
 
-const rule = 'What is the result of the expression?.\n';
+const description = 'What is the result of the expression?.';
 
-export default () => core(rule, getDataForCalc);
+export default () => core(description, getData);

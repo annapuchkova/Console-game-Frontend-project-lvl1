@@ -2,11 +2,12 @@ import { cons } from '@hexlet/pairs';
 import getRandomInt from '../maths';
 import core from '..';
 
+const lengthOfProgression = 10;
+
 const getProgression = () => {
   const hiddenNumIndex = getRandomInt(0, 9);
   const start = getRandomInt(1, 20);
   const commonDiff = getRandomInt(1, 3);
-  const lengthOfProgression = 10;
   const iter = (range, step, maxLen) => {
     if (range.length === maxLen) {
       const str = range;
@@ -31,12 +32,12 @@ const getProgressionAnswer = (progression) => {
   return (indexHidden === 0) ? Number(arr[1]) - step : Number(arr[8]) + step;
 };
 
-export const getDataForProgression = () => {
-  const question = `${getProgression()}`;
+const getData = () => {
+  const question = getProgression();
   const correctAnswer = getProgressionAnswer(question);
-  return cons(question, `${correctAnswer}`);
+  return cons(`${question}`, `${correctAnswer}`);
 };
 
-const rule = 'What number is missing in the progression?.\n';
+const description = 'What number is missing in the progression?.';
 
-export default () => core(rule, getDataForProgression);
+export default () => core(description, getData);

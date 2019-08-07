@@ -2,12 +2,14 @@ import { cons } from '@hexlet/pairs';
 import getRandomInt from '../maths';
 import core from '..';
 
-const getDataForEven = () => {
+const isEven = num => (num % 2 === 0);
+
+const getData = () => {
   const question = getRandomInt(1, 100);
-  const correctAnswer = (question % 2 === 0) ? 'yes' : 'no';
+  const correctAnswer = isEven(question) ? 'yes' : 'no';
   return cons(`${question}`, correctAnswer);
 };
 
-const rule = 'Answer "yes" if number even otherwise answer "no".\n';
+const description = 'Answer "yes" if number even otherwise answer "no".';
 
-export default () => core(rule, getDataForEven);
+export default () => core(description, getData);
