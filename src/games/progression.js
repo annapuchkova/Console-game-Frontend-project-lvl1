@@ -3,12 +3,10 @@ import getRandomInt from '../utils';
 import core from '..';
 
 const lengthOfProgression = 10;
-const diff = getRandomInt(1, 3);
-
 
 const getProgression = () => {
   const startElement = getRandomInt(1, 20);
- 
+  const diff = getRandomInt(1, 3);
   const iter = (range, i) => {
     if (range.length === lengthOfProgression) {
       /* const progression = range.join(' ');
