@@ -1,6 +1,6 @@
 {
   "name": "frondend-project",
-  "version": "8.2.3",
+  "version": "8.2.4",
   "description": "Brain-Games: Hexlet Project #1",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
