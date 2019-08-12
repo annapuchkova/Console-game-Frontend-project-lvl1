@@ -1,50 +1,32 @@
 import readlineSync from 'readline-sync';
 import { car, cdr } from '@hexlet/pairs';
 
-const totalRounds = 3;
+const roundsCount = 3;
 
-const congratulate = name => console.log(`Congratulations, ${name}!`);
-
-const askAnswer = (question) => {
-  console.log(`Question: ${question}`);
-  return readlineSync.question('Your answer: ');
-};
-
-const sayCorrect = () => console.log('Correct!');
-
-const sayPity = (actualAnswer, correctAnswer, name) => {
-  console.log(`\n"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-  console.log(`Let's try again, ${name}!`);
-};
-
-const greeting = (rule) => {
+export default (description, getRoundData) => {
   console.log('Welcome to the Brain Games!');
-  console.log(`${rule}\n`);
-};
-
-const sayHello = name => console.log(`Hello, ${name}!\n`);
-
-export default (rule, questionAndCorrectAnswer) => {
-  greeting(rule);
+  console.log(`${description}\n`);
 
   const name = readlineSync.question('May I have your name? ');
-  sayHello(name);
+  console.log(`Hello, ${name}!\n`);
 
-  const playRounds = (roundNumber) => {
-    if (roundNumber > totalRounds) {
-      return congratulate(name);
+  const iter = (counter) => {
+    if (counter > roundsCount) {
+      console.log(`Congratulations, ${name}!`);
+      return;
     }
-    const nextQuestionAndAnswer = questionAndCorrectAnswer();
-    const question = car(nextQuestionAndAnswer);
-    const correctAnswer = cdr(nextQuestionAndAnswer);
-
-    const actualAnswer = askAnswer(question);
+    const roundData = getRoundData();
+    const question = car(roundData);
+    const correctAnswer = cdr(roundData);
+    console.log(`Question: ${question}`);
+    const actualAnswer = readlineSync.question('Your answer: ');
 
     if (correctAnswer === actualAnswer) {
-      sayCorrect();
-      return playRounds(roundNumber + 1);
+      console.log('Correct!');
+      iter(counter + 1);
     }
-    return sayPity(actualAnswer, correctAnswer, name);
+    console.log(`\n"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+    console.log(`Let's try again, ${name}!`);
   };
-  playRounds(1);
+  iter(1);
 };
