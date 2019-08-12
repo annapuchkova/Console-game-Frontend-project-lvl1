@@ -21,12 +21,13 @@ export default (description, getRoundData) => {
     console.log(`Question: ${question}`);
     const actualAnswer = readlineSync.question('Your answer: ');
 
-    if (correctAnswer === actualAnswer) {
-      console.log('Correct!');
-      iter(counter + 1);
+    if (correctAnswer !== actualAnswer) {
+      console.log(`\n"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      console.log(`Let's try again, ${name}!`);
+      return;
     }
-    console.log(`\n"${actualAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-    console.log(`Let's try again, ${name}!`);
+    console.log('Correct!');
+    iter(counter + 1);
   };
   iter(1);
 };
