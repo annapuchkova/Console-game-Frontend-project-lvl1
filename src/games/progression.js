@@ -4,10 +4,11 @@ import core from '..';
 
 const lengthOfProgression = 10;
 const diff = getRandomInt(1, 3);
-const hiddenElementIndex = getRandomInt(0, lengthOfProgression - 1);
-const startElement = getRandomInt(1, 20);
+
 
 const getProgression = () => {
+  const startElement = getRandomInt(1, 20);
+ 
   const iter = (range, i) => {
     if (range.length === lengthOfProgression) {
       /* const progression = range.join(' ');
@@ -36,6 +37,7 @@ const arr = progression.split(' ');
 
 const getData = () => {
   const progression = getProgression();
+  const hiddenElementIndex = getRandomInt(0, lengthOfProgression - 1);
   const correctAnswer = progression[hiddenElementIndex].toString();
   const question = progression
     .map((item, index) => (index === hiddenElementIndex ? '..' : item)).join(' ');
