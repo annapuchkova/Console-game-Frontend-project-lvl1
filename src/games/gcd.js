@@ -8,7 +8,7 @@ const getData = () => {
   const firstOperand = getRandomInt(1, 10);
   const secondOperand = getRandomInt(1, 10);
   const question = `${firstOperand} ${secondOperand}`;
-  const correctAnswer = toString(getGcd(firstOperand, secondOperand));
+  const correctAnswer = getGcd(firstOperand, secondOperand).toString();
   return cons(question, correctAnswer);
 };
 

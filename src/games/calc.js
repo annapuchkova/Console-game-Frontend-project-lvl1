@@ -16,7 +16,7 @@ const getData = () => {
   const operationsRange = getRandomInt(0, operations.length - 1);
   const operator = operations[operationsRange];
   const question = `${firstOperand} ${operator} ${secondOperand}`;
-  const correctAnswer = toString(actions[operator](firstOperand, secondOperand));
+  const correctAnswer = actions[operator](firstOperand, secondOperand).toString();
   return cons(question, correctAnswer);
 };
 
