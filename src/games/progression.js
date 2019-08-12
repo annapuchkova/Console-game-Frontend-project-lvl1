@@ -36,7 +36,7 @@ const arr = progression.split(' ');
 
 const getData = () => {
   const progression = getProgression();
-  const correctAnswer = progression[hiddenElementIndex];
+  const correctAnswer = progression[hiddenElementIndex].toString();
   const question = progression
     .map((item, index) => (index === hiddenElementIndex ? '..' : item)).join(' ');
   /*
