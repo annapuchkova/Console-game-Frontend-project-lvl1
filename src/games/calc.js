@@ -11,15 +11,14 @@ const actions = {
 const operations = Object.keys(actions);
 
 const getData = () => {
-  const firstOperand = getRandomInt(1, 10);
-  const secondOperand = getRandomInt(1, 10);
-  const operationsRange = getRandomInt(0, operations.length - 1);
-  const operator = operations[operationsRange];
-  const question = `${firstOperand} ${operator} ${secondOperand}`;
-  const correctAnswer = actions[operator](firstOperand, secondOperand).toString();
+  const first = getRandomInt(1, 10);
+  const second = getRandomInt(1, 10);
+  const operator = operations[getRandomInt(0, operations.length - 1)];
+  const question = `${first} ${operator} ${second}`;
+  const correctAnswer = actions[operator](first, second).toString();
   return cons(question, correctAnswer);
 };
 
-const description = 'What is the result of the expression?.';
+const description = 'What is the result of the expression?';
 
 export default () => core(description, getData);
